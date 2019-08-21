@@ -1,35 +1,33 @@
 from queue import Queue
 
-def BFS(start,que,visited,result):
-    if visited[start]:
-        return None
+def BFS(start,que,visited):
     que.put(start)
-    visited[start] = 1
-    result[start][start] = 1
-
     while que.qsize():
         v = que.get()
         for w in edge[v]: #O(M)
             if not visited[w]:
                 visited[w]=1
-                result[v][w], result[w][v] = 1, 1
-                que.put(w)
 
+                que.put(w)
+def DFS(start,visited):
+    for w in edge[start]:
+        if not visited[w]:
+            visited[w] = 1
+            DFS(w, visited)
+
+
+#데이터 전처리
 N = int(input())
 edge = [[] for row in range(N)]
-visited = [0 for row in range(N)]
-result = [ [0 for col in range(N)] for row in range(N)]
-que = Queue()
 for i in range(N): #O(N^2)
     row = list(map(int, input().split()))
     for j in range(N):
         if row[j]:
             edge[i].append(j)
 
-for i in range(N): #O(n)
-    BFS(i, que, visited, result)
 
+# 알고리즘 로직 : O(n * m)
 for i in range(N):
-    for j in range(N):
-        print(result[i][j], end=' ')
-    print()
+    visited = [0 for row in range(N)]
+    DFS(i,visited)
+    print(' '.join(map(str,visited)))

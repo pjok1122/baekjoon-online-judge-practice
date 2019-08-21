@@ -1,11 +1,11 @@
 
 from queue import Queue
 
-def DFS(start, N, visited):
+def DFS(start, N, visited): #O(n^2)
     visited[start] = 1
     print(start, end=' ')
     for i in range(1,N+1): #O(n)
-        if (edge[start][i] and not visited[i]): #O(n)
+        if (edge[start][i] and not visited[i]): 
             DFS(i, N, visited)
 def BFS(start, N, visited,que):
     que.put(start)

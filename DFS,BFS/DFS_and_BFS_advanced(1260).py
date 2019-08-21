@@ -1,22 +1,23 @@
 
 from queue import Queue
 
-def DFS(start, N, visited):
+def DFS(start, visited): #Complex : O(m) 
     visited[start] = 1
     print(start, end=' ')
-    for i in edge[start]:
+    for i in edge[start]:  # Complex : deg(i)
         if not visited[i]:
-            DFS(i, N, visited)
-def BFS(start, N, visited,que):
-    que.put(start)
+            DFS(i, visited)
+
+def BFS(start, visited,que):
     visited[start] = 1
+    que.put(start)
     print(start, end=' ')
     while que.qsize():
         v = que.get()
-        for i in edge[v]:
+        for i in edge[v]: # Complex : deg(i)
             if not visited[i]:
-                que.put(i)
                 visited[i] = 1
+                que.put(i)
                 print(i, end=' ')
 
 N,M,start = map(int,input().split())
@@ -33,7 +34,7 @@ for _ in range(M):
 for i in range(N):
     edge[i].sort()
 
-DFS(start, N, visited)
+DFS(start, visited)
 visited =[0 for row in range(N+1)]
 print()
-BFS(start, N, visited, que)
+BFS(start, visited, que)
