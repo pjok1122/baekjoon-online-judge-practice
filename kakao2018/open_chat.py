@@ -1,3 +1,9 @@
+'''
+정답률 : 59.91%
+1. dict 타입을 이용해서 UID와 ID를 매핑시킨다.
+2. 해당 결과를 이쁘게 출력하면 끝.
+'''
+
 def solution(records):
     answer = []
     Id =[]
