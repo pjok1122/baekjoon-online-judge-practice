@@ -18,7 +18,7 @@
 
  모듈 : permutations, combinations 
 
-## DFS BFS
+## [DFS BFS](https://github.com/pjok1122/backjoon-algorithm-practice/tree/master/DFS%2CBFS)
 
  알고리즘 대회에서 가장 많이 출제되는 유형입니다.
 
@@ -47,7 +47,7 @@
 
  2. DP 자체만으로 문제를 출제하는 경우는 많지 않습니다. BFS와 연계된 문제에 집중하세요.
 
-## Binary Search
+## [Binary Search](https://github.com/pjok1122/backjoon-algorithm-practice/tree/master/binarySearch)
 
  이진탐색은 정렬된 데이터에 대해서 log(N) 복잡도를 가지는 탐색 기법입니다.
 
