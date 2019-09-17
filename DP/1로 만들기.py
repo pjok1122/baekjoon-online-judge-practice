@@ -1,3 +1,10 @@
+'''
+DP 기본문제.
+1. dp[n] = n을 1로 만드는데 드는 최소 연산 횟수
+2. BFS를 이용해서도 문제를 풀 수 있다.
+
+'''
+
 import sys
 from collections import deque
 sys.setrecursionlimit(10**6)
