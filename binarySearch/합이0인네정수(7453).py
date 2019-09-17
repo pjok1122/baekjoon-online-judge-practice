@@ -1,77 +1,12 @@
 '''
-
+1. A+B가 될 수 있는 값을 모두 저장한 배열 AB,
+2. C+D가 될 수 있는 값을 모두 저장한 배열 CD로 나눈다.
+3. CD를 오름차순으로 정렬하고, AB의 각 원소마다 Binary Search를 시작한다.
+4. 만약 값이 존재하지 않으면 더이상 탐색하지 않고, 값이 존재한다면 그 중에서 가장 왼쪽 인덱스를 찾는다.
+5. 왼쪽 인덱스로부터 탐색을 시작하여, 가장 오른쪽 인덱스를 찾는 Binary Search를 한번 더 수행한다.
 '''
 from math import ceil
 import sys
-import bisect as bs
-
-# def binarySearch(target):
-#     start = 0
-#     end = len(cd)-1
-#     mid = (start+end)//2
-#     pos = -1
-#     while(start<=end):
-#         if cd[mid] > target:
-#             end = mid-1
-#             mid = (start+end)//2
-#         elif cd[mid] < target:
-#             start = mid+1
-#             mid = (start+end)//2
-#         else:
-#             pos = mid
-#             break
-    
-#     cnt = 0
-#     #왼쪽 검사
-#     for i in range(pos,-1,-1):
-#         if cd[i] == target:
-#             cnt+=1
-#         else:
-#             break
-
-#     #오른쪽 검사
-#     for i in range(pos+1,len(cd)):
-#         if cd[i] == target:
-#             cnt+=1
-#         else:
-#             break
-    
-#     return cnt
-    
-# def binarySearchLower(target):
-#     start = 0
-#     end = n*n-1
-#     mid = (start+end)//2
-
-#     while start<end:
-#         if(cd[mid] >= target):
-#             end = mid
-#             mid = (start+end)//2
-#         else:
-#             start = mid + 1
-#             mid = (start+end)//2
-
-#     if cd[mid] == target:
-#         return start
-#     else:
-#         return -1
-
-# def binarySearchUpper(target,low):
-#     start,end =low, n*n-1
-#     mid = (start+end)//2
-#     while start<end:
-#         if cd[mid] <= target:
-#             start = mid
-#             mid = ceil((start+end)/2)
-#         else:
-#             end = mid-1
-#             mid = (start+end)//2
-    
-#     if cd[mid] == target:
-#         return start
-#     else:
-#         return -1
-
 
 n = int(sys.stdin.readline())
 arr =[list(map(int,sys.stdin.readline().split())) for _ in range(n)]
@@ -85,51 +20,35 @@ for i in range(n):
 cd.sort()
 low,up =0,0
 result = 0
-# for num in ab:
-#     low = binarySearchLower(-num)
-#     if(low!=-1): #low = -1이면 체크 할 필요 없음.
-#         up = binarySearchUpper(-num,0)
-#         result += up-low+1
-        
-# for num in ab:
-#     start,end = 0, n*n-1
-#     while(start<end):
-#         mid = (start+end)//2
-#         if cd[mid] >= -num:
-#             end = mid
-#         else:
-#             start = mid+1
-    
-#     if cd[start] == -num:
-#         low = start
-#     else:
-#         low = -1
-    
-#     if low == -1:
-#         continue
 
-#     start,end = low, n*n-1
-#     mid = (start+end)//2
-#     while(start<end):
-#         if cd[mid] <= -num:
-#             start = mid
-#             mid = ceil((start+end)/2)
-#         else:
-#             end = mid-1
-#             mid = (start+end)//2
-#     if cd[end] == -num:
-#         up = start
-#     result += up - low + 1
-
-length = len(cd)
 for num in ab:
-    low = bs.bisect_left(cd,-num)
-    if low == length:
-        continue
-    if cd[low] != -num:
-        continue
+    start,end = 0, n*n-1
+    while(start<end):
+        mid = (start+end)//2
+        if cd[mid] >= -num:
+            end = mid
+        else:
+            start = mid+1
+    
+    if cd[start] == -num:
+        low = start
     else:
-        high = bs.bisect_right(cd, -num, low, length-1)
-        result += high - low
+        low = -1
+    
+    if low == -1:
+        continue
+
+    start,end = low, n*n-1
+    mid = (start+end)//2
+    while(start<end):
+        if cd[mid] <= -num:
+            start = mid
+            mid = ceil((start+end)/2)
+        else:
+            end = mid-1
+            mid = (start+end)//2
+    if cd[end] == -num:
+        up = start
+    result += up - low + 1
 
 print(result)
