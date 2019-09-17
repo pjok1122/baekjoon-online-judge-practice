@@ -6,7 +6,9 @@
 
  1. 입력이 빈번하게 일어나는 경우, input() 대신, sys.stdin.readline()을 사용하는 것이 좋습니다.
 
+
 ## [N and M](https://github.com/pjok1122/backjoon-algorithm-practice/tree/master/N_and_M)
+
 
  재귀함수와 백트래킹을 공부할 수 있는 가장 좋은 문제집입니다.
 
