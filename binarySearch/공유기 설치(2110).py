@@ -72,4 +72,6 @@ def BinarySearch(target):
     
     return answer
 
+
+
 print(BinarySearch(C))
