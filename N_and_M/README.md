@@ -33,6 +33,6 @@ def combination(arr,depth, index):
 # Itertools library 사용.
 import itertools
 arr=['A','B','C','D']
-print(list(itertools.permutations(arr)))
-print(list(itertools.combinations(arr)))
+print(list(itertools.permutations(arr,4)))
+print(list(itertools.combinations(arr,4)))
  ```

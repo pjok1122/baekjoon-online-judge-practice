@@ -21,9 +21,9 @@ def binarySearch_R(s,e,target):
     elif s>=e:
         return 0
     elif arr[m] < target:
-        return binarySearch_R(arr,target,m+1,e)
+        return binarySearch_R(m+1,e,target)
     elif arr[m] > target:
-        return binarySearch_R(arr,target,s,m-1)
+        return binarySearch_R(s,m-1,target)
 
 # for문을 이용한 풀이
 def binarySearch(target):

@@ -35,7 +35,7 @@
 
 4. 현재 노드로부터 이동할 수 있는 위치가 다양할 경우, dx[], dy[] 라는 리스트를 만들어 해결합니다.
 
-##  Dynamic Programming
+## [Dynamic Programming](https://github.com/pjok1122/backjoon-algorithm-practice/tree/master/DP)
 
  DP는 이미 계산된 결과를 다시 계산하지 않도록, 메모리에 값을 저장해두는 프로그래밍 기법입니다.
 
