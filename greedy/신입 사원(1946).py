@@ -36,11 +36,9 @@ ex) score['서류 등수'] = '면접 등수'
 
 시간 복잡도 : O(n)
 '''
-import sys
-
-T = int(sys.stdin.readline())
-
-# 알고리즘 1
+# import sys
+# T = int(sys.stdin.readline())
+# # 알고리즘 1
 # for test_case in range(T):
 #     N = int(sys.stdin.readline())
 #     scores = [list(map(int,sys.stdin.readline().split())) for _ in range(N)]
@@ -58,6 +56,9 @@ T = int(sys.stdin.readline())
 
 # 알고리즘 2 (Optimization Version)
 # 편의상 스코어 = 등수로 생각.
+import sys
+T = int(sys.stdin.readline())
+
 for test_case in range(T):
     N = int(sys.stdin.readline())
     scores =[100]* (N+1)
