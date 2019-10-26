@@ -10,13 +10,16 @@ sys.setrecursionlimit(10**7)
 dp = [0]*1001
 dp[0] = 1
 dp[1] = 1
-#Top-down
+# Top-down
+
+
 def func(n):
     if dp[n]:
         return dp[n]
-    
+
     dp[n] = func(n-1) + func(n-2)
     return dp[n]
 
+
 n = int(input())
-print(func(n)%10007)
+print(func(n) % 10007)
