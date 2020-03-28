@@ -1,5 +1,4 @@
-
-public class Test {
+public class SwapPairs {
     public static ListNode swapPairs(ListNode head) {
     	if(head!=null && head.next!=null) {
 	    	int temp = head.val;
