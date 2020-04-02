@@ -30,9 +30,48 @@ bridge_length	weight	truck_weights	                        return
 2	              10	  [7,4,5,6]                             8
 100	              100	  [10]      	                        101
 100	              100	  [10,10,10,10,10,10,10,10,10,10]       110
+
+[문제 풀이]
+
+큐에 (트럭무게, 트럭위치)를 삽입해서 1초가 지날 때마다 트럭의 위치를 갱신하는 방법으로 접근.
+
 '''
+
+from collections import deque
 
 
 def solution(bridge_length, weight, truck_weights):
-    answer = 0
-    return answer
+    q = deque()
+    truck_index, time = 0, 0
+    num_of_truck = len(truck_weights)
+    current_weight = 0
+
+    while truck_index < num_of_truck:
+
+        # print(time, q)
+        # 트럭이 다리를 건널 수 있는지 확인하고 건널 수 있다면 추가하기.
+        if(truck_weights[truck_index] + current_weight <= weight):
+            q.append([truck_weights[truck_index], 0])
+            current_weight += truck_weights[truck_index]
+            truck_index += 1
+
+        # 위치를 +1해줬을 때, 다리를 다 건넌 트럭 찾기.
+        time += 1
+        remove_index = []
+        for i, truck_info in enumerate(q):
+            truck_info[1] += 1
+
+        if(q[0][1] == bridge_length):
+            current_weight -= q[0][0]
+            q.popleft()
+
+    # 아직 다리 위에 있는 트럭 중 가장 뒤에있는 트럭의 위치를 알면 언제 다 건너는지 알 수 있음.
+    if q:
+        time += bridge_length - q.pop()[1] + 1
+    return time
+
+
+# print(solution(2, 10, [7, 4, 5, 6]))
+# print(solution(100, 100, [10]))
+# print(solution(100, 100, [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]))
+print(solution(1, 10, [5, 5]))
