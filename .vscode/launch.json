@@ -4,8 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-    
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Solution",
+            "request": "launch",
+            "mainClass": "Programmers.level2.Solution",
+            "projectName": "baekjoon-online-judge-practice_b7c68bff"
+        },
         {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
