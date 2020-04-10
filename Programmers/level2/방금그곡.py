@@ -9,6 +9,11 @@ def solution(m, musicinfos):
     for musicinfo in musicinfos:
         start_time, end_time, title, melody = musicinfo.split(',')
         #재생 시간 계산.
+        if(start_time == end_time):
+            continue
+        elif(end_time =="00:00"):
+            end_time = "24:00"
+
         running_time = (int(end_time[0:2]) - int(start_time[0:2]))*60 + (int(end_time[3:5]) - int(start_time[3:5]))
         play_melody = []
         note_index = 0
@@ -16,14 +21,15 @@ def solution(m, musicinfos):
             if(note_index>=len(melody)):
                 note_index %= len(melody)
 
-            if(melody[note_index] =='#'):
-                play_melody[-1] = play_melody[-1] + '#'
-                play_melody.append(melody[(note_index+1)%len(melody)])
+            if(note_index +1 < len(melody) and melody[note_index+1] =='#'):
+                play_melody.append(melody[note_index:note_index+2])
                 note_index+=2
             else:
                 play_melody.append(melody[note_index])
                 note_index+=1
         
+        # CDEFGABCDEFGAB
+        #        ABCDEFG
         for i in range(running_time - m_running_time + 1):
             if(m == ''.join(play_melody[i:i+m_running_time])):
                 if answer_running_time < running_time:
